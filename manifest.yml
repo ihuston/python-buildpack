@@ -13,6 +13,9 @@ url_to_dependency_map:
   - match: libffi
     name: libffi
     version: "3.1"
+  - match: Miniconda2-(\d+\.\d+\.\d+)
+    name: Miniconda2
+    version: $1
 
 dependencies:
   - name: libmemcache
@@ -75,6 +78,12 @@ dependencies:
       - cflinuxfs2
     uri: https://buildpacks.cloudfoundry.org/concourse-binaries/python/python-3.5.2-linux-x64.tgz
     md5: 701a135b3228075c2ce59c527bc92e1e
+  - name: Miniconda2
+    version: 4.1.11
+    cf_stacks:
+      - cflinuxfs2
+    uri: http://repo.continuum.io/miniconda/Miniconda2-4.1.11-Linux-x86_64.sh
+    md5: b2af3b9ff39c4a4a812f50cecbafcda6
 exclude_files:
   - .git/
   - .gitignore

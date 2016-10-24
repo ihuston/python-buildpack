@@ -79,6 +79,12 @@ fi
 CONDA_ENV="dep_env"
 
 echo "-----> Installing Dependencies..."
+CONDA_PACKAGES="${BUILD_DIR}/vendor/packages.tar"
+if [ -e $CONDA_PACKAGES ]; then
+    echo "-----> Installing packages from ${CONDA_PACKAGES}"
+    $CONDA_BIN/conda install -q -y --offline $CONDA_PACKAGES
+fi
+
 echo "-----> Installing conda environment from environment.yml..."
 $CONDA_BIN/conda env update --quiet -n $CONDA_ENV -f "$BUILD_DIR/environment.yml"
 $CONDA_BIN/conda clean -pt
